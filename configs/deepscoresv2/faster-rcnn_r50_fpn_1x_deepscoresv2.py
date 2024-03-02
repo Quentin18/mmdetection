@@ -40,3 +40,5 @@ model = dict(
         ),
     ),
 )
+
+optim_wrapper = dict(optimizer=dict(lr=0.005))
