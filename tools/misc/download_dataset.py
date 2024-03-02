@@ -43,12 +43,15 @@ def download(url, dir, unzip=True, delete=False, threads=1):
         elif not f.exists():
             print(f'Downloading {url} to {f}')
             torch.hub.download_url_to_file(url, f, progress=True)
-        if unzip and f.suffix in ('.zip', '.tar'):
+        if unzip and f.suffix in ('.zip', '.tar', '.gz'):
             print(f'Unzipping {f.name}')
             if f.suffix == '.zip':
                 ZipFile(f).extractall(path=dir)
             elif f.suffix == '.tar':
                 TarFile(f).extractall(path=dir)
+            elif f.suffix == '.gz':
+                tar = tarfile.open(f)
+                tar.extractall(path=dir)
             if delete:
                 f.unlink()
                 print(f'Delete {f}')
@@ -203,11 +206,14 @@ def main():
             'https://bvisionweb1.cs.unc.edu/licheng/referit/data/refcoco+.zip',
             # refcocog annotations
             'https://bvisionweb1.cs.unc.edu/licheng/referit/data/refcocog.zip'
+        ],
+        deepscoresv2=[
+            'https://zenodo.org/records/4012193/files/ds2_dense.tar.gz'
         ])
     url = data2url.get(args.dataset_name, None)
     if url is None:
         print('Only support ADE20K, COCO, RefCOCO, VOC, LVIS, '
-              'balloon, and Objects365v2 now!')
+              'balloon, Objects365v2 and DeepScoresV2 now!')
         return
     if args.dataset_name == 'objects365v2':
         download_objects365v2(
