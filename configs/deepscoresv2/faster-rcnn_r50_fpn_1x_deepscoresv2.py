@@ -4,6 +4,7 @@ _base_ = [
     "../_base_/schedules/schedule_1x.py",
     "../_base_/default_runtime.py",
 ]
+
 model = dict(
     data_preprocessor=dict(
         _delete_=True,
@@ -42,3 +43,12 @@ model = dict(
 )
 
 optim_wrapper = dict(optimizer=dict(lr=0.005))
+
+train_cfg = dict(max_epochs=500)
+
+default_hooks = dict(checkpoint=dict(interval=10))
+
+vis_backends = [
+    dict(type="LocalVisBackend"),
+    dict(type="TensorboardVisBackend"),
+]
