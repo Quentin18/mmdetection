@@ -47,7 +47,7 @@ train_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        ann_file="deepscores_train.json",
+        ann_file="annotation_coco_train.json",
         data_prefix=dict(img="images/"),
         pipeline=train_pipeline,
         backend_args=backend_args,
@@ -59,7 +59,7 @@ val_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        ann_file="deepscores_test.json",
+        ann_file="annotation_coco_test.json",
         data_prefix=dict(img="images/"),
         pipeline=test_pipeline,
         backend_args=backend_args,
@@ -69,7 +69,7 @@ test_dataloader = val_dataloader
 
 val_evaluator = dict(
     type="CocoMetric",
-    ann_file=data_root + "deepscores_test.json",
+    ann_file=data_root + "annotation_coco_test.json",
     metric="bbox",
     backend_args=backend_args,
 )
