@@ -12,6 +12,7 @@ from .coco_semantic import CocoSegDataset
 from .crowdhuman import CrowdHumanDataset
 from .dataset_wrappers import ConcatDataset, MultiImageMixDataset
 from .deepfashion import DeepFashionDataset
+from .deepscoresv2 import DeepScoresV2Dataset
 from .dod import DODDataset
 from .dsdl import DSDLDetDataset
 from .flickr30k import Flickr30kDataset
@@ -49,5 +50,5 @@ __all__ = [
     'BaseSegDataset', 'ADE20KSegDataset', 'CocoSegDataset',
     'ADE20KInstanceDataset', 'iSAIDDataset', 'V3DetDataset', 'ConcatDataset',
     'ODVGDataset', 'MDETRStyleRefCocoDataset', 'DODDataset',
-    'CustomSampleSizeSampler', 'Flickr30kDataset'
+    'CustomSampleSizeSampler', 'Flickr30kDataset', 'DeepScoresV2Dataset'
 ]
