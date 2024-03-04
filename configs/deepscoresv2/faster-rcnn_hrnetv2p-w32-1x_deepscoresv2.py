@@ -1,4 +1,4 @@
-_base_ = "../faster_rcnn/faster-rcnn_r50_fpn_1x_deepscoresv2.py"
+_base_ = "./faster-rcnn_r50_fpn_1x_deepscoresv2.py"
 model = dict(
     backbone=dict(
         _delete_=True,
