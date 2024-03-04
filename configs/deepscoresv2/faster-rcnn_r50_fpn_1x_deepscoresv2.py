@@ -7,7 +7,12 @@ _base_ = [
 
 model = dict(
     data_preprocessor=dict(
-        _delete_=True,
+        type="DetDataPreprocessor",
+        mean=[240.0, 240.0, 240.0],
+        std=[57.0, 57.0, 57.0],
+        bgr_to_rgb=False,
+        pad_mask=True,
+        pad_size_divisor=32,
     ),
     rpn_head=dict(
         anchor_generator=dict(
